@@ -1,0 +1,5 @@
+displayName: Runtime for Node.js applications
+description: Runtime for Node.js v12 applications
+tags: ["NodeJS"]
+projectType: "nodejs"
+language: "nodejs"
