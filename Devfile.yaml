@@ -1,0 +1,30 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: nodejs-simple-
+projects:
+  - name: nodejs-simple-project
+    source:
+      type: git
+      location: "https://github.com/neeraj-laad/nodejs-simple-project.git"
+components:
+  - type: dockerimage
+    alias: node12
+    image: node:12
+    memoryLimit: 1024Mi
+    mountSources: true
+    endpoints:
+      - name: "nodejs"
+        port: 3000
+commands:
+  - name: devBuild
+    actions:
+      - type: exec
+        component: node12
+        command: npm install
+        workdir: ${CHE_PROJECTS_ROOT}/nodejs-simple-project
+  - name: devRun
+    actions:
+      - type: exec
+        component: node12
+        command: npm start
+        workdir: ${CHE_PROJECTS_ROOT}/nodejs-simple-project
