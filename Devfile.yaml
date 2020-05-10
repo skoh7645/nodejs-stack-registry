@@ -5,7 +5,7 @@ projects:
   - name: nodejs-simple-project
     source:
       type: git
-      location: "https://github.com/neeraj-laad/nodejs-simple-project.git"
+      location: https://github.com/neeraj-laad/nodejs-simple-project.git
 components:
   - type: dockerimage
     alias: node12
@@ -13,7 +13,7 @@ components:
     memoryLimit: 1024Mi
     mountSources: true
     endpoints:
-      - name: "nodejs"
+      - name: nodejs
         port: 3000
 commands:
   - name: devBuild
