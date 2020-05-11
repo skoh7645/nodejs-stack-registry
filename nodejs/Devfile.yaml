@@ -1,11 +1,11 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: nodejs-simple-
+  generateName: nodejs-
 projects:
-  - name: nodejs-simple-project
+  - name: express
     source:
       type: git
-      location: https://github.com/neeraj-laad/nodejs-simple-project.git
+      location: https://github.com/neeraj-laad/nodejs-express-starter.git
 components:
   - type: dockerimage
     alias: node12
@@ -21,10 +21,10 @@ commands:
       - type: exec
         component: node12
         command: npm install
-        workdir: ${CHE_PROJECTS_ROOT}/nodejs-simple-project
+        workdir: ${CHE_PROJECTS_ROOT}/express
   - name: devRun
     actions:
       - type: exec
         component: node12
         command: npm start
-        workdir: ${CHE_PROJECTS_ROOT}/nodejs-simple-project
+        workdir: ${CHE_PROJECTS_ROOT}/express
