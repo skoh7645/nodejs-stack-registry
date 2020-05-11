@@ -6,7 +6,6 @@ projects:
     source:
       type: git
       location: https://github.com/neeraj-laad/nodejs-express-starter.git
-      clonePath: app
 components:
   - type: dockerimage
     alias: node12
@@ -22,10 +21,10 @@ commands:
       - type: exec
         component: node12
         command: npm install
-        workdir: ${CHE_PROJECTS_ROOT}/app
+        workdir: ${CHE_PROJECTS_ROOT}/express
   - name: devRun
     actions:
       - type: exec
         component: node12
         command: npm start
-        workdir: ${CHE_PROJECTS_ROOT}/app
+        workdir: ${CHE_PROJECTS_ROOT}/express
