@@ -1,5 +1,5 @@
 displayName: Express framework
 description: Express framework for Node.js web applications
-tags: ["NodeJS", "Express"]
+tags: ["node", "nodejs", "express"]
 projectType: "express"
 language: "nodejs"
