@@ -15,7 +15,7 @@
     "displayName": "Express framework",
     "description": "Express framework for Node.js web applications",
     "tags": [
-      "NodeJS"
+      "NodeJS",
       "Express"
     ],
     "projectType": "express",
