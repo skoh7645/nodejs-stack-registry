@@ -3,7 +3,7 @@
     "displayName": "Node.js runtime",
     "description": "Runtime for Node.js v12 applications",
     "tags": [
-      "NodeJS"
+      "nodejs"
     ],
     "projectType": "nodejs",
     "language": "nodejs",
@@ -15,8 +15,8 @@
     "displayName": "Express framework",
     "description": "Express framework for Node.js web applications",
     "tags": [
-      "NodeJS",
-      "Express"
+      "nodejs",
+      "express"
     ],
     "projectType": "express",
     "language": "nodejs",
