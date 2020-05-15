@@ -1,19 +1,13 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: nodejs-
-projects:
-  - name: express
-    source:
-      type: git
-      location: https://github.com/neeraj-laad/nodejs-express-starter.git
+  generateName: express-
 components:
   - type: dockerimage
     alias: node12
     image: node:12
-    memoryLimit: 1024Mi
     mountSources: true
     endpoints:
-      - name: nodejs
+      - name: express
         port: 3000
 commands:
   - name: devBuild
@@ -21,10 +15,10 @@ commands:
       - type: exec
         component: node12
         command: npm install
-        workdir: ${CHE_PROJECTS_ROOT}/express
+        workdir: ${CHE_PROJECTS_ROOT}/app
   - name: devRun
     actions:
       - type: exec
         component: node12
         command: npm start
-        workdir: ${CHE_PROJECTS_ROOT}/express
+        workdir: ${CHE_PROJECTS_ROOT}/app
