@@ -1,7 +1,7 @@
 [
   {
     "displayName": "Node.js runtime",
-    "description": "Runtime for Node.js v12 applications",
+    "description": "Runtime for Node.js applications",
     "tags": [
       "node",
       "nodejs"
