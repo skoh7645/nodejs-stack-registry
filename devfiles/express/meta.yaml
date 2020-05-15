@@ -1,0 +1,5 @@
+displayName: Express application
+description: Node.js web application using Express framework
+tags: ["NodeJS", "Express"]
+projectType: "express"
+language: "nodejs"
