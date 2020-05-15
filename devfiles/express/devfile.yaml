@@ -10,6 +10,7 @@ components:
   - type: dockerimage
     alias: node12
     image: node:12
+    memoryLimit: 1024Mi
     mountSources: true
     endpoints:
       - name: express
