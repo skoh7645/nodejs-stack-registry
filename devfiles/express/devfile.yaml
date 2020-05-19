@@ -26,5 +26,5 @@ commands:
     actions:
       - type: exec
         component: node12
-        command: npm start
+        command: node server.js
         workdir: ${CHE_PROJECTS_ROOT}/app
