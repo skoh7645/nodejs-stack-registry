@@ -50,7 +50,7 @@ const pino = require('pino')({
 app.use(require('pino-http')({logger: pino}));
 
 // Register the user's app.
-app.use('/', require('./user-app/app.js')({
+app.use('/', require('./user-app')({
   server: server,
   app: app,
   log: pino,
