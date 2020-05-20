@@ -5,7 +5,7 @@ projects:
   - name: simple
     source:
       type: git
-      location: https://github.com/neeraj-laad/express-starter-simple.git
+      location: https://github.com/neeraj-laad/nodejs-express-starter.git
 components:
   - type: dockerimage
     alias: node12
