@@ -4,6 +4,7 @@ const http = require('http');
 
 Prometheus.collectDefaultMetrics();
 
+
 const requestHistogram = new Prometheus.Histogram({
     name: 'http_request_duration_seconds',
     help: 'Duration of HTTP requests in seconds',
@@ -50,7 +51,7 @@ const pino = require('pino')({
 app.use(require('pino-http')({logger: pino}));
 
 // Register the user's app.
-app.use('/', require('./user-app')({
+app.use('/', require('./simple')({
   server: server,
   app: app,
   log: pino,
