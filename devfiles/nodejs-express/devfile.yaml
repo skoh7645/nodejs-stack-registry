@@ -2,11 +2,24 @@ apiVersion: 1.0.0
 metadata:
   generateName: express-
 projects:
-  - name: simple
+  - name: user-app
     source:
       type: git
       location: https://github.com/neeraj-laad/nodejs-express-starter.git
 components:
+  - type: dockerimage
+    alias: git-clone
+    image: alpine/git
+    memoryLimit: 1024Mi
+    args:
+      - clone
+      - --single-branch
+      - --
+      - https://github.com/neeraj-laad/nodejs-express-stack.git
+      - /stack
+    volumes:
+      - name: stack
+        containerPath: /stack
   - type: dockerimage
     alias: node12
     image: node:12
@@ -15,16 +28,25 @@ components:
     endpoints:
       - name: express
         port: 3000
-commands:
+    volumes:
+      - name: stack
+        containerPath: /stack
+commands: 
+  - name: devInit
+    actions:
+      - type: exec
+        component: node12
+        command: cp /stack/* /projects && npm install
+        workdir: ${CHE_PROJECTS_ROOT}
   - name: devBuild
     actions:
       - type: exec
         component: node12
         command: npm install
-        workdir: ${CHE_PROJECTS_ROOT}/app
+        workdir: ${CHE_PROJECTS_ROOT}/user-app
   - name: devRun
     actions:
       - type: exec
         component: node12
-        command: node server.js
-        workdir: ${CHE_PROJECTS_ROOT}/app
+        command: npm start
+        workdir: ${CHE_PROJECTS_ROOT}
