@@ -2,7 +2,7 @@ apiVersion: 1.0.0
 metadata:
   generateName: express-
 projects:
-  - name: user-app
+  - name: simple
     source:
       type: git
       location: https://github.com/neeraj-laad/nodejs-express-starter.git
@@ -43,7 +43,7 @@ commands:
       - type: exec
         component: node12
         command: npm install
-        workdir: ${CHE_PROJECTS_ROOT}/user-app
+        workdir: ${CHE_PROJECTS_ROOT}/simple
   - name: devRun
     actions:
       - type: exec
