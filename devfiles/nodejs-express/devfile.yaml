@@ -1,30 +1,30 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: nodejs-
+  generateName: express-
 projects:
-  - name: express
+  - name: simple
     source:
       type: git
       location: https://github.com/neeraj-laad/nodejs-express-starter.git
 components:
   - type: dockerimage
-    alias: node12
-    image: node:12
+    alias: odoexpress
+    image: cameronmcwilliam/express-odo
     memoryLimit: 1024Mi
     mountSources: true
     endpoints:
-      - name: nodejs
+      - name: express
         port: 3000
 commands:
   - name: devBuild
     actions:
       - type: exec
-        component: node12
+        component: odoexpress
         command: npm install
-        workdir: ${CHE_PROJECTS_ROOT}/express
+        workdir: ${CHE_PROJECTS_ROOT}
   - name: devRun
     actions:
       - type: exec
-        component: node12
+        component: odoexpress
         command: npm start
-        workdir: ${CHE_PROJECTS_ROOT}/express
+        workdir: ${CHE_PROJECTS_ROOT}
