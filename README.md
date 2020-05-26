@@ -1,2 +1,2 @@
-# nodejs-stacks
-Node.js stacks based on Devfiles
+# nodejs-stack-registry
+Devfile registry for Node.js stacks
