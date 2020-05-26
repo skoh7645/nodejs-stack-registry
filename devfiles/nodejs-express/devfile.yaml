@@ -8,19 +8,6 @@ projects:
       location: https://github.com/neeraj-laad/nodejs-express-starter.git
 components:
   - type: dockerimage
-    alias: git-clone
-    image: alpine/git
-    memoryLimit: 1024Mi
-    args:
-      - clone
-      - --single-branch
-      - --
-      - https://github.com/neeraj-laad/nodejs-express-stack.git
-      - /stack
-    volumes:
-      - name: stack
-        containerPath: /stack
-  - type: dockerimage
     alias: node12
     image: node:12
     memoryLimit: 1024Mi
@@ -36,7 +23,7 @@ commands:
     actions:
       - type: exec
         component: node12
-        command: cp /stack/* /projects && npm install
+        command: git init && git remote add origin https://github.com/neeraj-laad/nodejs-express-stack.git && git fetch && git reset origin/master && git branch --set-upstream-to=origin/master && git ls-files -z --deleted | xargs -0 git checkout -- && npm install
         workdir: ${CHE_PROJECTS_ROOT}
   - name: devBuild
     actions:
@@ -49,4 +36,16 @@ commands:
       - type: exec
         component: node12
         command: npm start
+        workdir: ${CHE_PROJECTS_ROOT}
+  - name: devTest
+    actions:
+      - type: exec
+        component: node12
+        command: npm test && npm test --prefix simple
+        workdir: ${CHE_PROJECTS_ROOT}
+  - name: devDebug
+    actions:
+      - type: exec
+        component: node12
+        command: npm debug
         workdir: ${CHE_PROJECTS_ROOT}
