@@ -15,9 +15,6 @@ components:
     endpoints:
       - name: express
         port: 3000
-    volumes:
-      - name: stack
-        containerPath: /stack
 commands: 
   - name: devInit
     actions:
