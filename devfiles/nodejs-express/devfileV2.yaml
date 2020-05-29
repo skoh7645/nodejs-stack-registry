@@ -1,0 +1,52 @@
+#WORK IN PROGRESS
+schemaVersion: 2.0.0
+metadata:
+  name: nodejs-express-starter
+projects:
+  - name: simple
+    git:
+      location: https://github.com/neeraj-laad/nodejs-express-starter.git
+components:
+  - container:
+      image: cameronmcwilliam/express-odo
+      mountSources: true
+      sourceMapping: /stack/user-app
+      name: odoexpress
+      memoryLimit: 1024Mi
+      endpoints:
+        - name: '3000/tcp'
+          targetPort: 3000
+          # odo not using currently, added to validate JSON Schema
+          configuration:
+            protocol: tcp
+            scheme: http
+            type: terminal
+commands: 
+  - exec:
+      id: install dependencies 
+      commandLine: "npm install"
+      component: odoexpress
+      workingDir: /stack/user-app
+      group:
+        kind: build
+  - exec:
+      id: run the app
+      commandLine: "node server.js"
+      component: odoexpress
+      workingDir: /stack
+      group:
+        kind: run
+  # - exec:
+  #     id: run test suite
+  #     commandLine: "npm test && npm test --prefix simple"
+  #     component: odoexpress
+  #     workingDir: ${CHE_PROJECTS_ROOT}
+  #     group:
+  #       kind: test
+  # - exec:
+  #     id: run app with debugging enabled
+  #     commandLine: "npm debug"
+  #     component: odoexpress
+  #     workingDir: ${CHE_PROJECTS_ROOT}
+  #     group:
+  #       kind: debug
