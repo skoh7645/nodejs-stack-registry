@@ -9,7 +9,7 @@ components:
   - container:
       image: cameronmcwilliam/express-odo
       mountSources: true
-      sourceMapping: /stack/user-app
+      #sourceMapping: /stack/user-app
       name: odoexpress
       memoryLimit: 1024Mi
       endpoints:
@@ -25,14 +25,14 @@ commands:
       id: install dependencies 
       commandLine: "npm install"
       component: odoexpress
-      workingDir: /stack/user-app
+      workingDir: ${CHE_PROJECTS_ROOT}/simple
       group:
         kind: build
   - exec:
       id: run the app
       commandLine: "node server.js"
       component: odoexpress
-      workingDir: /stack
+      workingDir: ${CHE_PROJECTS_ROOT}
       group:
         kind: run
   # - exec:
