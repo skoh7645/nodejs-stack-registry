@@ -21,7 +21,7 @@
       "express"
     ],
     "projectType": "express",
-    "language": "nodejs",
+    "language": "nodejs-express",
     "links": {
       "self": "/devfiles/nodejs-express/devfile.yaml"
     }
