@@ -9,7 +9,7 @@
     "projectType": "nodejs",
     "language": "nodejs",
     "links": {
-      "self": "/devfiles/nodejs/devfile.yaml"
+      "self": "/devfiles/nodejs-basic/devfile.yaml"
     }
   },
   {
