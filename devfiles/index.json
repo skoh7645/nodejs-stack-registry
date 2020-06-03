@@ -11,19 +11,5 @@
     "links": {
       "self": "/devfiles/nodejs-basic/devfile.yaml"
     }
-  },
-  {
-    "displayName": "Express framework",
-    "description": "Express framework for Node.js web applications",
-    "tags": [
-      "node",
-      "nodejs",
-      "express"
-    ],
-    "projectType": "express",
-    "language": "nodejs-express",
-    "links": {
-      "self": "/devfiles/nodejs-express/devfile.yaml"
-    }
   }
 ]
