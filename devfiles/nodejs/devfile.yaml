@@ -47,7 +47,8 @@ commands:
   - exec:
       id: run the app test suite
       commandLine: "npm test"
-      component: node12
+      component: runtime
       workingDir: ${CHE_PROJECTS_ROOT}/express
       group:
         kind: test
+        isDefault: true
