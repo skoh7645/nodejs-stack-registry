@@ -1,25 +1,20 @@
 schemaVersion: 2.0.0
 metadata:
   name: nodejs
+  version: 1.0.0
 projects:
-  - name: express
+  - name: nodejs-starter
     git:
       location: https://github.com/neeraj-laad/nodejs-basic-starter.git
 components:
   - container:
+      name: runtime
       image: registry.access.redhat.com/ubi8/nodejs-12:1-36
-      mountSources: true
-      name: node12
       memoryLimit: 1024Mi
+      mountSources: true
       endpoints:
-        - name: nodejs
+        - name: http-3000
           targetPort: 3000
-          configuration:
-            protocol: tcp
-            scheme: http
-            type: terminal
-        - name: debug
-          targetPort: 9229
           configuration:
             protocol: tcp
             scheme: http
@@ -27,29 +22,32 @@ components:
 commands:
   - exec:
       id: download app dependencies
-      commandLine: "npm install"
-      component: node12
-      workingDir: ${CHE_PROJECTS_ROOT}/express
+      component: runtime
+      commandLine: npm install
+      workingDir: ${CHE_PROJECTS_ROOT}/nodejs-starter
       group:
         kind: build
+        isDefault: true
   - exec:
       id: run the app
-      commandLine: "npm start"
+      component: runtime
+      commandLine: npm start
+      workingDir: ${CHE_PROJECTS_ROOT}/nodejs-starter
+      group:
+        kind: run
+        isDefault: true
+  - exec:
+      id: run the app (debugging enabled)
+      component: runtime
+      commandLine: npm run debug
+      workingDir: ${CHE_PROJECTS_ROOT}/nodejs-starter
+      group:
+        kind: debug
+        isDefault: true
+  - exec:
+      id: run the app test suite
+      commandLine: "npm test"
       component: node12
       workingDir: ${CHE_PROJECTS_ROOT}/express
       group:
-        kind: run
-  # - exec:
-  #     id: run the app (debugging enabled)
-  #     commandLine: "npm run debug"
-  #     component: node12
-  #     workingDir: ${CHE_PROJECTS_ROOT}/express
-  #     group:
-  #       kind: run
-  # - exec:
-  #     id: run the app test suite
-  #     commandLine: "npm test"
-  #     component: node12
-  #     workingDir: ${CHE_PROJECTS_ROOT}/express
-  #     group:
-  #       kind: test
+        kind: test
